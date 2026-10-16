@@ -63,7 +63,7 @@ function Portfolio() {
 
   return (
     <div className={styles.complitedProjectsContainer}>
-      <h2 className={styles.complitedProjectsTitle}>Nasze realizacje</h2>
+      <h2 className={styles.complitedProjectsTitle}>OUR WORK</h2>
 
       <Galleria
         value={images}
