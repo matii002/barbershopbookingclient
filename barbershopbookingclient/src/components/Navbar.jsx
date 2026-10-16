@@ -6,11 +6,7 @@ import logoImage from "../assets/images/menthingsbarbershop.png";
 function Navbar() {
   const logo = (
     <Link to="/">
-      <img
-        src={logoImage}
-        alt="Menthings Barbershop"
-        className={styles.logo}
-      />
+      <img src={logoImage} alt="Menthings Barbershop" className={styles.logo} />
     </Link>
   );
   const items = [

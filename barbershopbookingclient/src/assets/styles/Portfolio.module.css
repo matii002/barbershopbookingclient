@@ -1,0 +1,110 @@
+.complitedProjectsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 32px 16px 48px;
+  justify-content: center;
+  text-align: center;
+  background-color: var(--black);
+  color: var(--white);
+}
+.galleriaContainer {
+  display: flex;
+  flex: 1;
+}
+.complitedProjectsTitle {
+  position: relative;
+  margin: 0 0 2rem;
+  padding-bottom: 1rem;
+  color: var(--white);
+  font-size: clamp(1.4rem, 3vw, 2.35rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 18px rgb(0 0 0 / 35%);
+}
+
+.complitedProjectsTitle::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 4rem;
+  height: 3px;
+  margin: 0 auto;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--orange), var(--light-orange));
+  content: "";
+}
+.itemContainer:global(.p-galleria-item-container) {
+  flex-direction: column;
+}
+.galleria {
+  font-size: clamp(0.778rem, calc(0.765rem + 0.064vw), 0.833rem);
+  text-align: center;
+}
+.galleria :global(.p-galleria-item-nav) {
+  z-index: 2;
+}
+.galleria :global(.p-image-preview-indicator) {
+  z-index: 1;
+}
+.caption:global(.p-galleria-caption) {
+  position: static;
+  background: transparent;
+  padding: 8px 0 0;
+  max-width: 40vw;
+  text-align: left;
+}
+.mainImage {
+  max-width: 100%;
+  max-height: 70vh;
+  aspect-ratio: 5/4;
+  width: auto;
+  height: auto;
+}
+.mainImageFullScreen {
+  max-width: 90%;
+  max-height: 90vh;
+  aspect-ratio: 5/4;
+  width: auto;
+  height: auto;
+}
+.galleriaFrame {
+  position: relative;
+}
+.maximalizeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 3;
+  background-color: transparent;
+  color: var(--white);
+  border: none;
+  padding: 0;
+}
+.maximalizeButton:focus {
+  border: none;
+  outline: none;
+  box-shadow: 0 0 0 2px var(--white);
+}
+.maximalizeIcon {
+  font-size: 1.5rem;
+}
+.imageDescription {
+  width: 45vw;
+}
+@media (max-width: 640px) {
+  .complitedProjectsContainer {
+    padding: 24px 8px 32px;
+  }
+  .galleria {
+    width: 100%;
+  }
+  .imageDescription {
+    width: 90vw;
+  }
+}

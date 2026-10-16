@@ -1,11 +1,13 @@
+import Portfolio from "../components/mainPage/Portfolio";
 import Navbar from "../components/Navbar";
-import MainPageContent from "../components/mainPage/MainPageContent";
+import Service from "../components/Service";
 
 function MainPage() {
   return (
     <>
       <Navbar />
-      <MainPageContent />
+      <Service />
+      <Portfolio />
     </>
   );
 }
