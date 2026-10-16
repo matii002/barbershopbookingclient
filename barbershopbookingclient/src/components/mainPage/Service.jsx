@@ -1,5 +1,5 @@
 import { Button } from "primereact/button";
-import styles from "../assets/styles/Service.module.css";
+import styles from "../../assets/styles/Service.module.css";
 
 function Service() {
   return (
