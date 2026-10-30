@@ -1,9 +1,10 @@
 import Navbar from "./components/Navbar";
-import { Outlet } from "react-router";
+import { Outlet, ScrollRestoration } from "react-router";
 
 function Dashboard() {
   return (
     <>
+      <ScrollRestoration />
       <Navbar />
       <Outlet />
     </>

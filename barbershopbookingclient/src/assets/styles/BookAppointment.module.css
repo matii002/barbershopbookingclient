@@ -1,0 +1,143 @@
+.BookAppointmentContainer {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  box-sizing: border-box;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(3.5rem, 8vw, 6.5rem) 1.5rem;
+  color: var(--white);
+  text-align: center;
+  background:
+    radial-gradient(ellipse at 50% 0, rgb(201 163 106 / 13%), transparent 55%),
+    linear-gradient(135deg, #111827, var(--dark-primary));
+}
+
+.BookAppointmentContainer::before,
+.BookAppointmentContainer::after {
+  position: absolute;
+  z-index: -1;
+  width: 18rem;
+  height: 18rem;
+  border: 1px solid rgb(201 163 106 / 16%);
+  border-radius: 50%;
+  content: "";
+  pointer-events: none;
+}
+
+.BookAppointmentContainer::before {
+  top: -12rem;
+  left: -8rem;
+}
+
+.BookAppointmentContainer::after {
+  right: -8rem;
+  bottom: -13rem;
+}
+
+.BookAppointmentForm {
+  width: min(100%, 52rem);
+  box-sizing: border-box;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  border: 1px solid rgb(255 255 255 / 15%);
+  border-radius: 1rem;
+  background: rgb(255 255 255 / 4%);
+  text-align: left;
+  backdrop-filter: blur(0.5rem);
+}
+
+.BookAppointmentTitle {
+  margin: 0;
+  color: var(--white);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  text-align: center;
+}
+
+.selectionGroup {
+  min-width: 0;
+  margin: 0 0 1.75rem;
+  padding: 0;
+  border: 0;
+}
+
+.selectionGroup legend {
+  margin-bottom: 0.85rem;
+  color: var(--dark-orange);
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.optionsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.optionCard {
+  display: flex;
+  min-height: 3.5rem;
+  align-items: center;
+  gap: 0.75rem;
+  box-sizing: border-box;
+  padding: 0.85rem 1rem;
+  border: 1px solid rgb(255 255 255 / 18%);
+  border-radius: 0.6rem;
+  color: var(--white);
+  cursor: pointer;
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease;
+}
+
+.optionCard:has(input:checked) {
+  border-color: var(--dark-orange);
+  background: rgb(212 178 125 / 12%);
+}
+
+.optionCard:focus-within {
+  outline: 2px solid var(--light-orange);
+  outline-offset: 2px;
+}
+
+.optionCard input {
+  accent-color: var(--dark-orange);
+}
+
+.barberImage {
+  width: 2.5rem;
+  height: 2.5rem;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.submitButton {
+  display: block;
+  margin: 0 auto;
+  padding: 0.8rem 1.5rem;
+  border: 1px solid var(--dark-orange);
+  border-radius: 0.5rem;
+  background: var(--dark-orange);
+  color: var(--dark-primary);
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+}
+
+.submitButton:hover {
+  background: var(--light-orange);
+}
+
+.confirmation {
+  margin: 1.25rem 0 0;
+  color: var(--white);
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .optionsGrid {
+    grid-template-columns: 1fr;
+  }
+}
