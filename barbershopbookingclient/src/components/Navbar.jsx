@@ -1,7 +1,7 @@
 import { Menubar } from "primereact/menubar";
 import { Link } from "react-router";
-import styles from "../assets/styles/Navbar.module.css";
-import logoImage from "../assets/images/menthingsbarbershop.png";
+import styles from "@/assets/styles/Navbar.module.css";
+import logoImage from "@/assets/images/menthingsbarbershop.png";
 
 function Navbar() {
   const logo = (

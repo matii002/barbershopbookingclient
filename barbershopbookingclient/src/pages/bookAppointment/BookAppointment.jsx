@@ -1,4 +1,4 @@
-import styles from "../assets/styles/BookAppointment.module.css";
+import styles from "@/assets/styles/BookAppointment.module.css";
 import { RadioButton } from "primereact/radiobutton";
 import { Button } from "primereact/button";
 import { useForm, Controller } from "react-hook-form";

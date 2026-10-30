@@ -1,4 +1,4 @@
-import styles from "../../assets/styles/Contact.module.css";
+import styles from "@/assets/styles/Contact.module.css";
 
 function Contact() {
   const contactItems = [

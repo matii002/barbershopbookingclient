@@ -1,4 +1,4 @@
-import Navbar from "./components/Navbar";
+import Navbar from "@/components/Navbar";
 import { Outlet, ScrollRestoration } from "react-router";
 
 function Dashboard() {

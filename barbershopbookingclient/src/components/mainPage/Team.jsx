@@ -1,5 +1,5 @@
 import { Image } from "primereact/image";
-import styles from "../../assets/styles/Team.module.css";
+import styles from "@/assets/styles/Team.module.css";
 
 function Team() {
   const employees = [

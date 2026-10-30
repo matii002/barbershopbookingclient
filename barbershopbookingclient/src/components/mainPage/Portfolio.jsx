@@ -2,9 +2,9 @@ import { Galleria } from "primereact/galleria";
 import { Image } from "primereact/image";
 import { Button } from "primereact/button";
 import { useRef, useState } from "react";
-import photo1 from "../../assets/images/photo1.png";
-import photo2 from "../../assets/images/menthingsbarbershop.png";
-import styles from "../../assets/styles/Portfolio.module.css";
+import photo1 from "@/assets/images/photo1.png";
+import photo2 from "@/assets/images/menthingsbarbershop.png";
+import styles from "@/assets/styles/Portfolio.module.css";
 
 function Portfolio() {
   const galleria = useRef(null);
