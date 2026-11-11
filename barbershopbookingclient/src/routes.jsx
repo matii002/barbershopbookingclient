@@ -1,13 +1,14 @@
 import { createBrowserRouter } from "react-router";
 import MainPage from "@/pages/MainPage";
 import BookAppointmentPage from "@/pages/bookAppointment/BookAppointmentPage";
-import Dashboard from "@/Dashboard";
+import DashboardClient from "@/DashboardClient";
 import LoginPage from "./pages/LoginPage";
+import AppointmentManagement from "@/components/appointments/AppointmentManagement";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Dashboard />,
+    element: <DashboardClient />,
     // errorElement: <ErrorPage />,
     children: [
       {
@@ -21,6 +22,14 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <LoginPage />,
+      },
+      {
+        path: "/logout",
+        element: <LoginPage />,
+      },
+      {
+        path: "/appointments",
+        element: <AppointmentManagement />,
       },
     ],
   },

@@ -1,16 +1,18 @@
-import Navbar from "@/components/Navbar";
+import NavbarClient from "@/components/NavbarClient";
 import { Outlet, ScrollRestoration } from "react-router";
 import styles from "@/assets/styles/Dashboard.module.css";
 import Footer from "@/components/Footer";
+import NavbarEmployee from "@/components/NavbarEmployee";
 
-function Dashboard() {
+function DashboardClient() {
   return (
     <div className={styles.dashboardContainer}>
       <ScrollRestoration />
-      <Navbar />
+      {/* <NavbarClient /> */}
+      <NavbarEmployee />
       <Outlet />
       <Footer />
     </div>
   );
 }
-export default Dashboard;
+export default DashboardClient;

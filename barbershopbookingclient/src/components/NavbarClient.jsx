@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import styles from "@/assets/styles/Navbar.module.css";
 import logoImage from "@/assets/images/menthingsbarbershop.png";
 
-function Navbar() {
+function NavbarClient() {
   const logo = (
     <Link to="/">
       <img src={logoImage} alt="Menthings Barbershop" className={styles.logo} />
@@ -70,4 +70,4 @@ function Navbar() {
     </div>
   );
 }
-export default Navbar;
+export default NavbarClient;
