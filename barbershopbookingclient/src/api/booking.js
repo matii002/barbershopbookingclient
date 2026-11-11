@@ -14,7 +14,12 @@ export const deleteBooking = async (bookingId) => {
   const response = await fetch(`${API_URL}/${bookingId}`, {
     method: "DELETE",
   });
-  return response.json();
+
+  if (!response.ok) {
+    throw new Error("Failed to delete booking");
+  }
+
+  return response.text();
 };
 
 export const updateBooking = async (bookingId, updatedData) => {

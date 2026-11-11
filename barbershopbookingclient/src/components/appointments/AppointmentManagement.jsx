@@ -9,6 +9,8 @@ import { useRef, useState } from "react";
 import { getBookings } from "@/api/booking";
 import { useQuery } from "@tanstack/react-query";
 import { formatDateTime } from "@/utils";
+import { deleteBooking } from "@/api/booking";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 function AppointmentManagement() {
   const toast = useRef(null);
@@ -16,21 +18,31 @@ function AppointmentManagement() {
   const [appointmentId, setAppointmentId] = useState(null);
   const [popupTarget, setPopupTarget] = useState(null);
 
+  const queryClient = useQueryClient();
+
   const bookings = useQuery({
     queryKey: ["bookings"],
     queryFn: () => getBookings(),
     staleTime: 120000,
   });
 
-  const handleDelete = (appointmentId) => {
-    // Handle delete logic here
-    console.log("Delete appointment with ID:", appointmentId);
-  };
+  const deleteMutation = useMutation({
+    mutationFn: (bookingId) => deleteBooking(bookingId),
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({ queryKey: ["bookings"] });
+      toast.current.show({
+        severity: "success",
+        summary: "Success",
+        detail: "Booking deleted successfully",
+      });
+    },
+  });
 
   const accept = () => {
     // Handle accept logic here
-    console.log("Accepted");
-    handleDelete(appointmentId);
+    if (appointmentId !== null) {
+      deleteMutation.mutate(appointmentId);
+    }
     setVisible(false);
   };
 
