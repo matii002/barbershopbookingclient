@@ -1,4 +1,4 @@
-import { Button } from "primereact/button";
+import { Link } from "react-router";
 import styles from "@/assets/styles/Service.module.css";
 
 function Service() {
@@ -22,9 +22,9 @@ function Service() {
       <p className={styles.serviceDescription}>
         Book an appointment today and experience the difference!
       </p>
-      <Button className={styles.serviceButton} variant="contained">
+      <Link to="/book-appointment" className={styles.serviceButton}>
         Book Now
-      </Button>
+      </Link>
     </div>
   );
 }

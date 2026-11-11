@@ -21,7 +21,7 @@ function Navbar() {
       ),
     },
     {
-      label: "Book appointment",
+      label: "Book an appointment",
       icon: "pi pi-fw pi-calendar",
       template: (item, options) => (
         <Link
@@ -39,7 +39,7 @@ function Navbar() {
       icon: "pi pi-fw pi-envelope",
       template: (item, options) => (
         <Link
-          to="/contact"
+          to="/#contact"
           className={options.className}
           onClick={options.onClick}
         >

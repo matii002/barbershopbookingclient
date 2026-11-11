@@ -1,0 +1,143 @@
+.loginContainer {
+  flex: 1;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  box-sizing: border-box;
+  min-height: 100%;
+  display: grid;
+  place-items: center;
+  padding: clamp(2.5rem, 8vw, 5rem) 1.25rem;
+  color: var(--white);
+  background:
+    radial-gradient(ellipse at 50% 0, rgb(201 163 106 / 13%), transparent 55%),
+    linear-gradient(135deg, #111827, var(--dark-primary));
+}
+
+.loginContainer::before,
+.loginContainer::after {
+  position: absolute;
+  z-index: -1;
+  width: 18rem;
+  height: 18rem;
+  border: 1px solid rgb(255 255 255 / 9%);
+  border-radius: 50%;
+  content: "";
+  pointer-events: none;
+}
+
+.loginContainer::before {
+  top: -12rem;
+  left: -8rem;
+}
+
+.loginContainer::after {
+  right: -8rem;
+  bottom: -13rem;
+}
+
+.loginForm {
+  width: min(100%, 28rem);
+  box-sizing: border-box;
+  padding: clamp(1.5rem, 5vw, 2.5rem);
+  border: 1px solid rgb(255 255 255 / 14%);
+  border-radius: 1rem;
+  background: rgb(17 24 39 / 78%);
+  box-shadow: 0 1.5rem 4rem rgb(0 0 0 / 24%);
+  backdrop-filter: blur(0.5rem);
+}
+
+.loginTitle {
+  margin: 0;
+  color: var(--white);
+  font-size: clamp(1.75rem, 5vw, 2.25rem);
+  text-align: center;
+}
+
+.loginDescription {
+  margin: 0.6rem 0 2rem;
+  color: rgb(255 255 255 / 70%);
+  text-align: center;
+}
+
+.loginFields {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.loginField {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.loginLabel {
+  color: var(--white);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.loginInput {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.8rem 0.9rem;
+  border: 1px solid rgb(255 255 255 / 24%);
+  border-radius: 0.5rem;
+  background: rgb(255 255 255 / 7%);
+  color: var(--white);
+  font: inherit;
+}
+
+.loginPassword {
+  display: block;
+  width: 100%;
+}
+
+.loginInput:enabled:hover {
+  border-color: var(--dark-orange);
+}
+
+.loginInput:enabled:focus {
+  border-color: var(--light-orange);
+  box-shadow: 0 0 0 2px rgb(225 195 145 / 22%);
+  outline: none;
+}
+
+.loginInput[aria-invalid="true"] {
+  border-color: #fca5a5;
+}
+
+.loginError {
+  justify-self: start;
+  color: #fecaca;
+  font-size: 0.875rem;
+}
+
+.submitButton {
+  display: block;
+  width: 100%;
+  margin-top: 1.75rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--dark-orange);
+  border-radius: 0.5rem;
+  background: var(--dark-orange);
+  color: var(--dark-primary);
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  transition:
+    background-color 160ms ease,
+    transform 160ms ease;
+}
+
+.submitButton:hover {
+  background: var(--light-orange);
+}
+
+.submitButton:active {
+  transform: translateY(1px);
+}
+
+.submitButton:focus-visible {
+  outline: 2px solid var(--light-orange);
+  outline-offset: 3px;
+}

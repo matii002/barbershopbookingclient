@@ -1,7 +1,8 @@
 import { createBrowserRouter } from "react-router";
 import MainPage from "@/pages/MainPage";
-import BookAppointment from "@/pages/bookAppointment/BookAppointment";
+import BookAppointmentPage from "@/pages/bookAppointment/BookAppointmentPage";
 import Dashboard from "@/Dashboard";
+import LoginPage from "./pages/LoginPage";
 
 const router = createBrowserRouter([
   {
@@ -15,7 +16,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/book-appointment",
-        element: <BookAppointment />,
+        element: <BookAppointmentPage />,
+      },
+      {
+        path: "/login",
+        element: <LoginPage />,
       },
     ],
   },

@@ -140,17 +140,23 @@
     transition: none;
   }
 }
-.serviceButton:global(.MuiButton-root) {
+.serviceButton {
   background-color: var(--dark-orange);
   color: var(--white);
-  border: 1px solid var(--dark-orange);
+  border: 2px solid var(--dark-orange);
   padding: 0.75rem 1.5rem;
   font-weight: 700;
   text-transform: none;
+  text-decoration: none;
+  border-radius: 6px;
 }
 
-.serviceButton {
+.serviceButton:hover {
   border-color: var(--light-orange);
   background-color: var(--orange);
-  padding: 0.75rem 1.5rem;
+  border: 2px solid var(--white);
+}
+
+.serviceButton:focus {
+  box-shadow: 0 0 0 3px rgb(255 255 255 / 30%);
 }

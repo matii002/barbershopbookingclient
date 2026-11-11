@@ -24,7 +24,7 @@ function Contact() {
     },
   ];
   return (
-    <div className={styles.contact}>
+    <div className={styles.contact} id="contact">
       <h1 className={styles.header}>CONTACT</h1>
       <div className={styles.contactContainer}>
         {contactItems.map((item, index) => (

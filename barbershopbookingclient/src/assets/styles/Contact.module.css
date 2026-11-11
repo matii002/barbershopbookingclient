@@ -26,10 +26,11 @@
 
 .contactContainer {
   text-align: center;
+  align-items: center;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   background-color: var(--black);
-  padding: 0 2rem 4rem 2rem;
+  padding: 2rem 2rem 6rem 2rem;
   gap: 2rem;
 }
 
@@ -46,7 +47,7 @@
   padding-right: 10px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1310px) {
   .contactContainer {
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }

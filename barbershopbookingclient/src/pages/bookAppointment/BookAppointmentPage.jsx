@@ -8,7 +8,7 @@ import { useRef } from "react";
 import { useNavigate } from "react-router";
 import { Message } from "primereact/message";
 
-function BookAppointment() {
+function BookAppointmentPage() {
   const queryClient = useQueryClient();
 
   const toast = useRef();
@@ -111,7 +111,7 @@ function BookAppointment() {
         className={styles.BookAppointmentForm}
         onSubmit={handleSubmit(onSubmit)}
       >
-        <h1 className={styles.BookAppointmentTitle}>Choose a service</h1>
+        <h1 className={styles.BookAppointmentTitle}>Book an appointment</h1>
 
         <fieldset className={styles.selectionGroup}>
           <legend>1. Choose a service</legend>
@@ -175,4 +175,4 @@ function BookAppointment() {
     </div>
   );
 }
-export default BookAppointment;
+export default BookAppointmentPage;
