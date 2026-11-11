@@ -6,12 +6,21 @@ import styles from "@/assets/styles/AppointmentManager.module.css";
 import { ConfirmPopup } from "primereact/confirmpopup";
 import { Toast } from "primereact/toast";
 import { useRef, useState } from "react";
+import { getBookings } from "@/api/booking";
+import { useQuery } from "@tanstack/react-query";
+import { formatDateTime } from "@/utils";
 
 function AppointmentManagement() {
   const toast = useRef(null);
   const [visible, setVisible] = useState(false);
   const [appointmentId, setAppointmentId] = useState(null);
   const [popupTarget, setPopupTarget] = useState(null);
+
+  const bookings = useQuery({
+    queryKey: ["bookings"],
+    queryFn: () => getBookings(),
+    staleTime: 120000,
+  });
 
   const handleDelete = (appointmentId) => {
     // Handle delete logic here
@@ -26,49 +35,28 @@ function AppointmentManagement() {
   };
 
   const reject = () => {
-    // Handle reject logic here
-    console.log("Rejected");
     setVisible(false);
   };
 
-  const appointments = [
-    {
-      id: 1,
-      startTime: "09:00 12/12/2026",
-      status: "Confirmed",
-      clientName: "John Doe",
-      employeeName: "John Smith",
-      serviceName: "Haircut",
-      price: 20,
-    },
-    {
-      id: 2,
-      startTime: "10:00 12/12/2026",
-      status: "Confirmed",
-      clientName: "Jane Smith",
-      employeeName: "Jane Doe",
-      serviceName: "Shave",
-      price: 15,
-    },
-    {
-      id: 3,
-      startTime: "11:00 12/12/2026",
-      status: "Pending",
-      clientName: "Mike Johnson",
-      employeeName: "Mike Wilson",
-      serviceName: "Haircut",
-      price: 20,
-    },
-    {
-      id: 4,
-      startTime: "12:00 12/12/2026",
-      status: "Confirmed",
-      clientName: "Emily Davis",
-      employeeName: "Emily Brown",
-      serviceName: "Shave",
-      price: 15,
-    },
-  ];
+  const statusClassNames = {
+    WAITING: styles.statusWaiting,
+    ACCEPTED: styles.statusAccepted,
+    REJECTED: styles.statusRejected,
+    FINISHED: styles.statusFinished,
+  };
+
+  const statusBody = (booking) => {
+    const status = booking.status.toUpperCase();
+
+    return (
+      <span
+        className={`${styles.status} ${statusClassNames[status] ?? styles.statusDefault}`}
+      >
+        {status}
+      </span>
+    );
+  };
+
   return (
     <div>
       <Toast ref={toast} />
@@ -82,12 +70,19 @@ function AppointmentManagement() {
         reject={reject}
       />
       <DataTable
-        value={appointments}
+        value={bookings?.data?.content}
         tableStyle={{ minWidth: "50rem" }}
         dataKey="id"
+        paginator
+        rows={5}
+        rowsPerPageOptions={[5, 10, 25]}
       >
-        <Column field="startTime" header="Start time"></Column>
-        <Column field="status" header="Status"></Column>
+        <Column
+          field="startTime"
+          header="Start time"
+          body={(booking) => formatDateTime(booking.startTime)}
+        ></Column>
+        <Column field="status" header="Status" body={statusBody}></Column>
         <Column field="clientName" header="Client name"></Column>
         <Column field="employeeName" header="Employee name"></Column>
         <Column field="serviceName" header="Service"></Column>
