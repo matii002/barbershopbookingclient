@@ -4,7 +4,7 @@ import BookAppointmentPage from "@/pages/bookAppointment/BookAppointmentPage";
 import DashboardClient from "@/DashboardClient";
 import LoginPage from "./pages/LoginPage";
 import AppointmentManagement from "@/components/appointments/AppointmentManagement";
-
+import EditAppointment from "@/components/appointments/EditAppointment";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -30,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: "/appointments",
         element: <AppointmentManagement />,
+      },
+      {
+        path: "/edit-appointment/:bookingId",
+        element: <EditAppointment />,
       },
     ],
   },

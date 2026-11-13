@@ -11,6 +11,8 @@ import { useQuery } from "@tanstack/react-query";
 import { formatDateTime } from "@/utils";
 import { deleteBooking } from "@/api/booking";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useNavigate } from "react-router";
+import StatusTemplate from "@/components/StatusTemplate.jsx";
 
 function AppointmentManagement() {
   const toast = useRef(null);
@@ -19,6 +21,8 @@ function AppointmentManagement() {
   const [popupTarget, setPopupTarget] = useState(null);
 
   const queryClient = useQueryClient();
+
+  const navigate = useNavigate();
 
   const bookings = useQuery({
     queryKey: ["bookings"],
@@ -39,7 +43,6 @@ function AppointmentManagement() {
   });
 
   const accept = () => {
-    // Handle accept logic here
     if (appointmentId !== null) {
       deleteMutation.mutate(appointmentId);
     }
@@ -48,25 +51,6 @@ function AppointmentManagement() {
 
   const reject = () => {
     setVisible(false);
-  };
-
-  const statusClassNames = {
-    WAITING: styles.statusWaiting,
-    ACCEPTED: styles.statusAccepted,
-    REJECTED: styles.statusRejected,
-    FINISHED: styles.statusFinished,
-  };
-
-  const statusBody = (booking) => {
-    const status = booking.status.toUpperCase();
-
-    return (
-      <span
-        className={`${styles.status} ${statusClassNames[status] ?? styles.statusDefault}`}
-      >
-        {status}
-      </span>
-    );
   };
 
   return (
@@ -94,7 +78,11 @@ function AppointmentManagement() {
           header="Start time"
           body={(booking) => formatDateTime(booking.startTime)}
         ></Column>
-        <Column field="status" header="Status" body={statusBody}></Column>
+        <Column
+          field="status"
+          header="Status"
+          body={(booking) => <StatusTemplate status={booking.status} />}
+        ></Column>
         <Column field="clientName" header="Client name"></Column>
         <Column field="employeeName" header="Employee name"></Column>
         <Column field="serviceName" header="Service"></Column>
@@ -103,7 +91,9 @@ function AppointmentManagement() {
           header="Options"
           body={(appointment) => (
             <div className={styles.buttonContainer}>
-              <EditButton />
+              <EditButton
+                onClick={() => navigate(`/edit-appointment/${appointment.id}`)}
+              />
               <DeleteButton
                 onClick={(event) => {
                   setVisible(true);

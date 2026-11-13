@@ -1,0 +1,32 @@
+.status {
+  display: inline-block;
+  padding: 0.25rem 0.65rem;
+  border-radius: 7rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.statusWaiting {
+  background-color: #ff7621;
+  color: var(--white);
+}
+
+.statusAccepted {
+  background-color: var(--blue);
+  color: var(--white);
+}
+
+.statusCANCELED {
+  background-color: var(--danger);
+  color: var(--white);
+}
+
+.statusFinished {
+  background-color: var(--green);
+  color: var(--white);
+}
+
+.statusDefault {
+  background-color: var(--gray);
+  color: var(--white);
+}
