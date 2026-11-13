@@ -22,13 +22,18 @@ export const deleteBooking = async (bookingId) => {
   return response.text();
 };
 
-export const updateBooking = async (bookingId, updatedData) => {
-  const response = await fetch(`${API_URL}/${bookingId}`, {
+export const updateBooking = async (updatedData) => {
+  const response = await fetch(API_URL, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(updatedData),
   });
-  return response.json();
+
+  if (!response.ok) {
+    throw new Error("Failed to update the reservation.");
+  }
+
+  return response.text();
 };
