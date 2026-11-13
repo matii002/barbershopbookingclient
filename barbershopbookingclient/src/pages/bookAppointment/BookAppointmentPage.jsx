@@ -10,9 +10,7 @@ import { Message } from "primereact/message";
 
 function BookAppointmentPage() {
   const queryClient = useQueryClient();
-
   const toast = useRef();
-
   const navigate = useNavigate();
 
   const getServices = [

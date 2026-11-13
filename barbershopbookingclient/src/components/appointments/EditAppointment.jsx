@@ -15,6 +15,7 @@ import { ProgressSpinner } from "primereact/progressspinner";
 import { Controller, useForm } from "react-hook-form";
 import { toLocalDataTime } from "@/utils";
 import StatusTemplate from "@/components/StatusTemplate.jsx";
+import { Message } from "primereact/message";
 
 function EditAppointment() {
   const [employeeSuggestions, setEmployeeSuggestions] = useState([]);
@@ -127,6 +128,7 @@ function EditAppointment() {
         <Controller
           control={control}
           name="startTime"
+          rules={{ required: "Choose an appointment date and time." }}
           render={({ field: { onChange, value } }) => (
             <Calendar
               className={styles.field}
@@ -137,9 +139,12 @@ function EditAppointment() {
             />
           )}
         />
+        {errors.startTime && <Message text={errors.startTime.message} />}
+
         <Controller
           control={control}
           name="status"
+          rules={{ required: "Choose a status." }}
           render={({ field: { onChange, value } }) => (
             <Dropdown
               options={statuses.data || []}
@@ -151,9 +156,12 @@ function EditAppointment() {
             />
           )}
         />
+        {errors.status && <Message text={errors.status.message} />}
+
         <Controller
           control={control}
           name="serviceId"
+          rules={{ required: "Choose a service." }}
           render={({ field: { onChange, value } }) => (
             <Dropdown
               options={services.data || []}
@@ -165,9 +173,12 @@ function EditAppointment() {
             />
           )}
         />
+        {errors.serviceId && <Message text={errors.serviceId.message} />}
+
         <Controller
           control={control}
           name="employee"
+          rules={{ required: "Choose a barber." }}
           render={({ field: { onChange, value } }) => (
             <AutoComplete
               value={value}
@@ -182,6 +193,8 @@ function EditAppointment() {
             />
           )}
         />
+        {errors.employee && <Message text={errors.employee.message} />}
+
         <Button
           label="Save"
           icon="pi pi-check"
